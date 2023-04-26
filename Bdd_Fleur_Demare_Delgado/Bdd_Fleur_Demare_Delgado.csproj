@@ -1,0 +1,80 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MySql.Data" Version="8.0.33" />
+  </ItemGroup>
+	<ItemGroup>
+		<None Remove="fonts\Simply Rounded.ttf" />
+		<None Remove="images\logo1.png" />
+		<None Remove="images\LogoClient.png" />
+		<None Remove="images\LogoCommande.png" />
+		<None Remove="images\LogoEntreprise.png" />
+		<None Remove="images\LogoFidelio.png" />
+		<None Remove="images\LogoFidelioGestion.png" />
+		<None Remove="images\LogoFournir.png" />
+		<None Remove="images\LogoFournisseur.png" />
+		<None Remove="images\LogoPiece.png" />
+		<None Remove="images\LogoStats.png" />
+		<None Remove="images\LogoStock.png" />
+		<None Remove="images\LogoVelo.png" />
+		<None Remove="images\wallpaper.jpg" />
+		<None Remove="wallpaper.jpg" />
+	</ItemGroup>
+
+
+	<ItemGroup>
+		<Content Include="fonts\Simply Rounded.ttf">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="MySql.Data" Version="8.0.29" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Resource Include="images\LogoClient.png">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="images\LogoCommande.png">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="images\LogoEntreprise.png">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="images\LogoFidelio.png">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="images\LogoFidelioGestion.png">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="images\LogoFournir.png">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="images\LogoFournisseur.png">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="images\LogoPiece.png">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="images\LogoStats.png">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="images\LogoStock.png">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="images\LogoVelo.png">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="images\wallpaper.jpg">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+	</ItemGroup>
+</Project>

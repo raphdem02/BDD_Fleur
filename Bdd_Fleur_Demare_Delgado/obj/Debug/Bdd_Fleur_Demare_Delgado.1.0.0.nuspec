@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Bdd_Fleur_Demare_Delgado</id>
+    <version>1.0.0</version>
+    <authors>Bdd_Fleur_Demare_Delgado</authors>
+    <description>Package Description</description>
+    <dependencies>
+      <group targetFramework="net5.0-windows7.0">
+        <dependency id="MySql.Data" version="8.0.29" exclude="Build,Analyzers" />
+        <dependency id="Newtonsoft.Json" version="13.0.1" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+    <frameworkReferences>
+      <group targetFramework="net5.0-windows7.0">
+        <frameworkReference name="Microsoft.WindowsDesktop.App.WPF" />
+      </group>
+    </frameworkReferences>
+    <contentFiles>
+      <files include="any/net5.0-windows7.0/fonts/Simply Rounded.ttf" buildAction="Content" />
+    </contentFiles>
+  </metadata>
+  <files>
+    <file src="C:\Users\Utilisateur\Documents\ESILV\A3\S6\BDD\Bdd_Fleur_Demare_Delgado\Bdd_Fleur_Demare_Delgado\bin\Debug\net5.0-windows\Bdd_Fleur_Demare_Delgado.runtimeconfig.json" target="lib\net5.0-windows7.0\Bdd_Fleur_Demare_Delgado.runtimeconfig.json" />
+    <file src="C:\Users\Utilisateur\Documents\ESILV\A3\S6\BDD\Bdd_Fleur_Demare_Delgado\Bdd_Fleur_Demare_Delgado\bin\Debug\net5.0-windows\Bdd_Fleur_Demare_Delgado.dll" target="lib\net5.0-windows7.0\Bdd_Fleur_Demare_Delgado.dll" />
+    <file src="C:\Users\Utilisateur\Documents\ESILV\A3\S6\BDD\Bdd_Fleur_Demare_Delgado\Bdd_Fleur_Demare_Delgado\fonts\Simply Rounded.ttf" target="content\fonts\Simply Rounded.ttf" />
+    <file src="C:\Users\Utilisateur\Documents\ESILV\A3\S6\BDD\Bdd_Fleur_Demare_Delgado\Bdd_Fleur_Demare_Delgado\fonts\Simply Rounded.ttf" target="contentFiles\any\net5.0-windows7.0\fonts\Simply Rounded.ttf" />
+  </files>
+</package>

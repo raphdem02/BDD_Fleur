@@ -1,0 +1,79 @@
+﻿<Window x:Class="Bdd_Fleur_Demare_Delgado.ClientConnexion"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Bdd_Fleur_Demare_Delgado"
+        mc:Ignorable="d"
+        Title="ClientConnexion" Height = "1000" Width = "1900" Background = "#1C1358"
+        WindowState="Maximized">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="600"/>
+            <ColumnDefinition Width="300"/>
+
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <Viewbox Stretch="Uniform">
+                <TextBlock Text="Connection" FontSize="100" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,20,20,20" FontFamily="Fonts/#Simply Rounded" RenderTransformOrigin="0.387,-3.425">
+                    <TextBlock.Foreground>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,0.8">
+                            <GradientStop Color="#65A1F1" Offset="0.2" />
+                            <GradientStop Color="#9B41E0" Offset="0.9" />
+                        </LinearGradientBrush>
+                    </TextBlock.Foreground>
+                </TextBlock>
+            </Viewbox>
+        </Grid>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <TextBlock Text="E-mail client" Margin="0,313,0,0" Foreground="White" FontSize="36" VerticalAlignment="Top" FontFamily="Fonts/#Simply Rounded" HorizontalAlignment="Center" Height="169" Width="226"></TextBlock>
+            </Grid>
+            <Grid Grid.Row="1">
+                <TextBlock Text="Password" Margin="25,138,25,0" Foreground="White" FontSize="36" VerticalAlignment="Top" FontFamily="Fonts/#Simply Rounded"></TextBlock>
+            </Grid>
+        </Grid>
+        <Grid Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <TextBox Name="TextBoxEmailC"  Margin="0,296,0,0" Width="400" Height="70" Background="#9B41E0" FontSize="24" VerticalAlignment="Top" HorizontalAlignment="Center" FontFamily="Fonts/#Simply Rounded" BorderBrush="#5B50B9" BorderThickness="4"></TextBox>
+            </Grid>
+            <Grid Grid.Row="1">
+                <TextBox Name="TextBoxPwdC"  Margin="0,116,0,0" Width="400" Height="70" Background="#9B41E0" FontSize="24" VerticalAlignment="Top" HorizontalAlignment="Center" FontFamily="Fonts/#Simply Rounded" BorderBrush="#5B50B9" BorderThickness="4"></TextBox>
+            </Grid>
+
+        </Grid>
+        <Grid Grid.Column="3">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Viewbox Stretch="Uniform">
+                    <Button Name="ButtonConnect" Content="Connect"  Margin="20 20 20 20" Width="192" Height="108" Foreground="#3159C9" FontSize="24" Click="ButtonConnect_Click" ClickMode="Release" Background="#65A1F1" FontFamily="Fonts/#Simply Rounded" BorderBrush="#5B50B9" HorizontalAlignment="Right" VerticalAlignment="Bottom"></Button>
+                </Viewbox>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Viewbox Stretch="Uniform">
+                    <Button Name="ButtonNewClient" Content="New"  Margin="20 20 20 20" Width="192" Height="108" Foreground="#3159C9" FontSize="24" Click="ButtonNew_Click" ClickMode="Release" Background="#65A1F1" FontFamily="Fonts/#Simply Rounded" BorderBrush="#5B50B9" HorizontalAlignment="Right" VerticalAlignment="Bottom"></Button>
+                </Viewbox>
+            </Grid>
+            <Grid Grid.Row="2">
+                <Viewbox Stretch="Uniform">
+                    <Button Name="ButtonMenu" Content="Menu"  Margin="20 20 20 20" Width="192" Height="108" Foreground="#3159C9" FontSize="24" Click="ButtonMenu_Click" ClickMode="Release" Background="#65A1F1" FontFamily="Fonts/#Simply Rounded" BorderBrush="#5B50B9" HorizontalAlignment="Right" VerticalAlignment="Bottom"></Button>
+                </Viewbox>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
+

@@ -1,0 +1,161 @@
+﻿<Window x:Class="Bdd_Fleur_Demare_Delgado.NewClient"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Bdd_Fleur_Demare_Delgado"
+        mc:Ignorable="d"
+        Title="NewClient" Height="1000" Width="1900" Background = "#1C1358"
+        WindowState="Maximized">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="700"/>
+            <ColumnDefinition Width ="300"/>
+            <ColumnDefinition Width="900"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Viewbox Stretch="Uniform">
+                    <TextBlock Text="New account creation" FontSize="100" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,20,20,20" FontFamily="Fonts/#Simply Rounded">
+                        <TextBlock.Foreground>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="0,0.8">
+                                <GradientStop Color="#65A1F1" Offset="0.2" />
+                                <GradientStop Color="#9B41E0" Offset="0.9" />
+                            </LinearGradientBrush>
+                        </TextBlock.Foreground>
+                    </TextBlock>
+                </Viewbox>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Viewbox Stretch="Uniform">
+                    <TextBox Name="TextBoxEmailC"  Margin="50 0 20 0" Width="400" Height="70" Background="#9B41E0" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Left" FontFamily="Fonts/#Simply Rounded" BorderBrush="#5B50B9" BorderThickness="4"></TextBox>
+                </Viewbox>
+            </Grid>
+            <Grid Grid.Row="2">
+                <Viewbox Stretch="Uniform">
+                    <TextBox Name="TextBoxPwdC"  Margin="50 0 20 0" Width="400" Height="70" Background="#9B41E0" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Left" FontFamily="Fonts/#Simply Rounded" BorderBrush="#5B50B9" BorderThickness="4"></TextBox>
+                </Viewbox>
+            </Grid>
+
+            <Grid Grid.Row="3">
+                <Viewbox Stretch="Uniform">
+                    <TextBox Name="TextBoxLastNameC"  Margin="50 0 20 0" Width="400" Height="70" Background="#9B41E0" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Left" FontFamily="Fonts/#Simply Rounded" BorderBrush="#5B50B9" BorderThickness="4"></TextBox>
+                </Viewbox>
+            </Grid>
+            <Grid Grid.Row="4">
+                <Viewbox Stretch="Uniform">
+                    <TextBox Name="TextBoxFirstNameC"  Margin="50 0 20 0" Width="400" Height="70" Background="#9B41E0" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Left" FontFamily="Fonts/#Simply Rounded" BorderBrush="#5B50B9" BorderThickness="4"></TextBox>
+                </Viewbox>
+            </Grid>
+            <Grid Grid.Row="5">
+                <Viewbox Stretch="Uniform">
+                    <TextBox Name="TextBoxStreetC"  Margin="50 0 20 0" Width="400" Height="70" Background="#9B41E0" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Left" FontFamily="Fonts/#Simply Rounded" BorderBrush="#5B50B9" BorderThickness="4"></TextBox>
+                </Viewbox>
+            </Grid>
+            <Grid Grid.Row="6">
+                <Viewbox Stretch="Uniform">
+                    <TextBox Name="TextBoxCityC"  Margin="50 0 20 0" Width="400" Height="70" Background="#9B41E0" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Left" FontFamily="Fonts/#Simply Rounded" BorderBrush="#5B50B9" BorderThickness="4"></TextBox>
+                </Viewbox>
+            </Grid>
+            <Grid Grid.Row="7">
+                <Viewbox Stretch="Uniform">
+                    <TextBox Name="TextBoxCountryC"  Margin="50 0 20 0" Width="400" Height="70" Background="#9B41E0" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Left" FontFamily="Fonts/#Simply Rounded" BorderBrush="#5B50B9" BorderThickness="4"></TextBox>
+                </Viewbox>
+            </Grid>
+            <Grid Grid.Row="8">
+                <Viewbox Stretch="Uniform">
+                    <TextBox Name="TextBoxPhoneC"  Margin="50 0 20 0" Width="400" Height="70" Background="#9B41E0" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Left" FontFamily="Fonts/#Simply Rounded" BorderBrush="#5B50B9" BorderThickness="4"></TextBox>
+                </Viewbox>
+            </Grid>
+            <Grid Grid.Row="9">
+                <Viewbox Stretch="Uniform">
+                    <TextBox Name="TextBoxBluecardNumberC"  Margin="50 0 20 0" Width="400" Height="70" Background="#9B41E0" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Left" FontFamily="Fonts/#Simply Rounded" BorderBrush="#5B50B9" BorderThickness="4"></TextBox>
+                </Viewbox>
+            </Grid>
+        </Grid>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="1">
+                <Viewbox Stretch="Uniform">
+                    <TextBlock Text="E-mail" Margin="25 0 25 0" Foreground="#65A1F1" FontSize="36" VerticalAlignment="Center" FontFamily="Fonts/#Simply Rounded"></TextBlock>
+                </Viewbox>
+            </Grid>
+            <Grid Grid.Row="2">
+                <Viewbox Stretch="Uniform">
+                    <TextBlock Text="Password" Margin="25 0 25 0" Foreground="#65A1F1" FontSize="36" VerticalAlignment="Center" FontFamily="Fonts/#Simply Rounded"></TextBlock>
+                </Viewbox>
+            </Grid>
+            <Grid Grid.Row="3">
+                <Viewbox Stretch="Uniform">
+                    <TextBlock Text="Last Name" Margin="25 0 25 0" Foreground="White" FontSize="36" VerticalAlignment="Center" FontFamily="Fonts/#Simply Rounded"></TextBlock>
+                </Viewbox>
+            </Grid>
+            <Grid Grid.Row="4">
+                <Viewbox Stretch="Uniform">
+                    <TextBlock Text="First Name" Margin="25 0 25 0" Foreground="White" FontSize="36" VerticalAlignment="Center" FontFamily="Fonts/#Simply Rounded"></TextBlock>
+                </Viewbox>
+            </Grid>
+            <Grid Grid.Row="5">
+                <Viewbox Stretch="Uniform">
+                    <TextBlock Text="Street" Margin="25 0 25 0" Foreground="White" FontSize="36" VerticalAlignment="Center" FontFamily="Fonts/#Simply Rounded"></TextBlock>
+                </Viewbox>
+            </Grid>
+            <Grid Grid.Row="6">
+                <Viewbox Stretch="Uniform">
+                    <TextBlock Text="City" Margin="25 0 25 0" Foreground="White" FontSize="36" VerticalAlignment="Center" FontFamily="Fonts/#Simply Rounded"></TextBlock>
+                </Viewbox>
+            </Grid>
+            <Grid Grid.Row="7">
+                <Viewbox Stretch="Uniform">
+                    <TextBlock Text="Country" Margin="25 0 25 0" Foreground="White" FontSize="36" VerticalAlignment="Center" FontFamily="Fonts/#Simply Rounded" RenderTransformOrigin="0.625,0.625"></TextBlock>
+                </Viewbox>
+            </Grid>
+            <Grid Grid.Row="8">
+                <Viewbox Stretch="Uniform">
+                    <TextBlock Text="Phone" Margin="25 0 25 0" Foreground="White" FontSize="36" VerticalAlignment="Center" FontFamily="Fonts/#Simply Rounded"></TextBlock>
+                </Viewbox>
+            </Grid>
+            <Grid Grid.Row="9">
+                <Viewbox Stretch="Uniform">
+                    <TextBlock Text="Bluecard number" Margin="25 0 25 0" Foreground="White" FontSize="36" VerticalAlignment="Center" FontFamily="Fonts/#Simply Rounded"></TextBlock>
+                </Viewbox>
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Column="3">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Button Name="ButtonCreateAccountC" Content="Create Account" Margin="120,164,450,79" Foreground="White" FontSize="24" Click="ButtonCreateAccountC_Click" ClickMode="Release" Background="#9B41E0" FontFamily="Fonts/#Simply Rounded" BorderBrush="#5B50B9"/>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Button Name="ButtonMenu" Content="Menu"  Margin="129,143,399,121" Foreground="#3159C9" FontSize="24" Click="ButtonMenu_Click" ClickMode="Release" Background="#65A1F1" FontFamily="Fonts/#Simply Rounded" BorderBrush="#5B50B9"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
