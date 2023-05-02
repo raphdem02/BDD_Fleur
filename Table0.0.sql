@@ -57,7 +57,7 @@ create table Stock(
 );
 
 create table Commande(
-	Id_Commande int primary key,
+	Id_Commande int auto_increment primary key,
     Id_Client int,
     Id_Magasin int,
     Date_commande date,

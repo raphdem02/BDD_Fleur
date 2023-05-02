@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MySql.Data.MySqlClient;
 using System.Diagnostics;
+using System.Data;
 namespace Bdd_Fleur_Demare_Delgado
 {
     /// <summary>
@@ -88,11 +89,17 @@ namespace Bdd_Fleur_Demare_Delgado
         /// <param name="e"></param>
         private void ButtonConnect_Click(object sender, RoutedEventArgs e)
         {
-            //TODO query to check if password and email are good
+            
             if(TextBoxEmailC.Text != "" && TextBoxPwdC.Text != "")
             {
                 string EmailC = TextBoxEmailC.Text;
                 string PwdC = TextBoxPwdC.Text;
+                string Lastname = "";
+                string Firstname = "";
+                string phone = "";
+                string bluecardnumber = "";
+                string fidelity = "";
+
                 /*if(emailC == "azerty" && pwdC == "azerty")
                 {
                     MainWindow mainWindow = new MainWindow();
@@ -100,8 +107,53 @@ namespace Bdd_Fleur_Demare_Delgado
                     this.Close();
                 }*/
 
-                //TODO query to check mail and pwd
-                ClientDashboard ClientDashboardPage = new ClientDashboard(EmailC, PwdC);
+                
+                string p_message;
+                /*OpenConnection();
+
+                MySqlCommand command = new MySqlCommand("VerifierEmail", connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                command.Parameters.AddWithValue("@p_e_mail", EmailC);
+                command.Parameters["@p_e_mail"].Direction = ParameterDirection.Input;
+
+                command.Parameters.AddWithValue("@p_message", "");
+                command.Parameters["@p_message"].Direction = ParameterDirection.Output;
+
+                command.ExecuteNonQuery();
+
+                p_message = command.Parameters["@p_message"].Value.ToString();
+
+                CloseConnection();*/
+                OpenConnection();
+                string query = "SELECT * FROM Client WHERE e_mail = @email AND mdp = @password";
+                MySqlCommand command = new MySqlCommand(query, connection);
+                command.Parameters.AddWithValue("@email", EmailC);
+                command.Parameters.AddWithValue("@password", PwdC);
+                using (MySqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        // Récupérez les données de chaque colonne dans la table Client
+                        int id = reader.GetInt32("Id_client");
+                        string nom = reader.GetString("Nom");
+                        string prenom = reader.GetString("Prenom");
+                        string tel = reader.GetString("N_tel");
+                        string e_mail = reader.GetString("e_mail");
+                        string mdp = reader.GetString("mdp");
+                        string bluecard = reader.GetString("carte_credit");
+                        string fidel = reader.GetString("fidelite");
+                        // Faites quelque chose avec les données récupérées
+                        Lastname = nom;
+                        Firstname = prenom;
+                        phone = tel;
+                        bluecardnumber = bluecard;
+                        fidelity = fidel;
+
+                    }
+                }
+                CloseConnection();
+                ClientDashboard ClientDashboardPage = new ClientDashboard(EmailC, PwdC, Firstname, Lastname, phone, bluecardnumber,fidelity) ;
                 ClientDashboardPage.Show();
                 this.Close();
             }

@@ -39,15 +39,25 @@ namespace Bdd_Fleur_Demare_Delgado
             InitializeComponent();
         }
 
-        public ClientDashboard(string email, string pwd)
+        public ClientDashboard(string email, string pwd,string FirstName,string LastName,string phone,string bluecardNumber,string fidelity)
         {
             InitializeComponent();
             this.email = email;
             this.pwd = pwd;
+            this.FirstName = FirstName;
+            this.LastName = LastName;
+            this.phone = phone;
+            this.bluecardNumber = bluecardNumber;
+            this.fidelity = fidelity;
 
-            //TODO query to have firstname, lastname,phone and bluecard and fidelity from a customer
+            
             TextBoxEmailC.Text = email;
             TextBoxPwdC.Text = pwd;
+            TextBoxFirstNameC.Text = FirstName;
+            TextBoxLastNameC.Text = LastName;
+            TextBoxPhoneC.Text = phone;
+            TextBoxBluecardNumberC.Text = bluecardNumber;
+            TextBoxFidelity.Text = fidelity;
 
         }
 
@@ -125,7 +135,7 @@ namespace Bdd_Fleur_Demare_Delgado
         /// <param name="e"></param>
         private void ButtonNewOrderC_Click(object sender, RoutedEventArgs e)
         {
-            ClientNewOrder ClientNewOrderPage = new ClientNewOrder(email,pwd);
+            ClientNewOrder ClientNewOrderPage = new ClientNewOrder(email, pwd, FirstName, LastName,phone,bluecardNumber,fidelity);
             ClientNewOrderPage.Show();
             this.Close();
         }
@@ -137,7 +147,7 @@ namespace Bdd_Fleur_Demare_Delgado
         /// <param name="e"></param>
         private void ButtonCatalog_Click(object sender, RoutedEventArgs e)
         {
-            Catalog CatalogPage = new Catalog(email,pwd);
+            Catalog CatalogPage = new Catalog(email, pwd, FirstName, LastName, phone, bluecardNumber, fidelity);
             CatalogPage.Show();
             this.Close();
         }

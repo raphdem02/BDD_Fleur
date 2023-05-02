@@ -12,34 +12,20 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MySql.Data.MySqlClient;
+using System.Diagnostics;
+using System.Data;
 
 namespace Bdd_Fleur_Demare_Delgado
 {
     /// <summary>
-    /// Logique d'interaction pour Catalog.xaml
+    /// Logique d'interaction pour StoreConnexion.xaml
     /// </summary>
-    public partial class Catalog : Window
+    public partial class StoreConnexion : Window
     {
         MySqlConnection connection = new MySqlConnection("SERVER = localhost; PORT=3306;DATABASE=fleurs;UID=root;PASSWORD=root");
-
-        private string emailC;
-        private string pwdC;
-        private string FirstNameC;
-        private string LastNameC;
-        private string phoneC;
-        private string bluecardNumberC;
-        private string fidelityC;
-        public Catalog(string email, string pwd, string FirstName, string LastName, string phone, string bluecardNumber, string fidelity)
+        public StoreConnexion()
         {
             InitializeComponent();
-            this.emailC = email;
-            this.pwdC = pwd;
-            this.FirstNameC = FirstName;
-            this.LastNameC = LastName;
-            this.phoneC = phone;
-            this.bluecardNumberC = bluecardNumber;
-            this.fidelityC = fidelity;
-
         }
 
         /// <summary>
@@ -47,7 +33,7 @@ namespace Bdd_Fleur_Demare_Delgado
         /// </summary>
         private void BoxClear()
         {
-            //TODO
+           
         }
         /// <summary>
         /// Open connection to database
@@ -63,7 +49,6 @@ namespace Bdd_Fleur_Demare_Delgado
         {
             connection.Close();
         }
-
 
         /// <summary>
         /// Execute la requête demandée si possible ou retourne l'erreur
@@ -95,29 +80,24 @@ namespace Bdd_Fleur_Demare_Delgado
                 CloseConnection();
             }
         }
-        /// <summary>
-        /// Button to go back to client dashboard
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void ButtonMenu_Click(object sender, RoutedEventArgs e)
         {
-            ClientDashboard ClientDashboardPage = new ClientDashboard(emailC,pwdC,FirstNameC,LastNameC,phoneC,bluecardNumberC,fidelityC);
-            ClientDashboardPage.Show();
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
             this.Close();
         }
 
-        /// <summary>
-        /// Button to go to new order page
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-
-        private void ButtonNewOrderC_Click(object sender, RoutedEventArgs e)
+        private void ButtonConnectStore_Click(object sender, RoutedEventArgs e)
         {
-            ClientNewOrder ClientNewOrderPage = new ClientNewOrder(emailC, pwdC,FirstNameC,LastNameC,phoneC,bluecardNumberC,fidelityC);
-            ClientNewOrderPage.Show();
-            this.Close();
+            if(TextBoxConnectStore.Text == "1" || TextBoxConnectStore.Text == "2" || TextBoxConnectStore.Text == "3")
+            {
+                string storeIdConnexion = TextBoxConnectStore.Text;
+                StoreDashboard NewStoreDashboardPage = new StoreDashboard(storeIdConnexion);
+                NewStoreDashboardPage.Show();
+                this.Close();
+            }
+            
         }
     }
 }

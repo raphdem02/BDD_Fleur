@@ -894,11 +894,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Utilisateur\\Documents\\ESILV\\A3\\S6\\BDD\\Bdd_Fleur_Demare_Delgado\\Bdd_Fleur_Demare_Delgado\\Bdd_Fleur_Demare_Delgado.csproj",
+      "projectUniqueName": "C:\\Users\\Utilisateur\\Documents\\GitHub\\BDD_Fleur\\Bdd_Fleur_Demare_Delgado\\Bdd_Fleur_Demare_Delgado.csproj",
       "projectName": "Bdd_Fleur_Demare_Delgado",
-      "projectPath": "C:\\Users\\Utilisateur\\Documents\\ESILV\\A3\\S6\\BDD\\Bdd_Fleur_Demare_Delgado\\Bdd_Fleur_Demare_Delgado\\Bdd_Fleur_Demare_Delgado.csproj",
+      "projectPath": "C:\\Users\\Utilisateur\\Documents\\GitHub\\BDD_Fleur\\Bdd_Fleur_Demare_Delgado\\Bdd_Fleur_Demare_Delgado.csproj",
       "packagesPath": "C:\\Users\\Utilisateur\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Utilisateur\\Documents\\ESILV\\A3\\S6\\BDD\\Bdd_Fleur_Demare_Delgado\\Bdd_Fleur_Demare_Delgado\\obj\\",
+      "outputPath": "C:\\Users\\Utilisateur\\Documents\\GitHub\\BDD_Fleur\\Bdd_Fleur_Demare_Delgado\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Utilisateur\\AppData\\Roaming\\NuGet\\NuGet.Config",

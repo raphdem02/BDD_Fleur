@@ -12,42 +12,36 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MySql.Data.MySqlClient;
+using System.Diagnostics;
+using System.Data;
 
 namespace Bdd_Fleur_Demare_Delgado
 {
-    /// <summary>
-    /// Logique d'interaction pour Catalog.xaml
+    /// <summary>   
+    /// Logique d'interaction pour Stock.xaml
     /// </summary>
-    public partial class Catalog : Window
+    public partial class Stock : Window
     {
         MySqlConnection connection = new MySqlConnection("SERVER = localhost; PORT=3306;DATABASE=fleurs;UID=root;PASSWORD=root");
-
-        private string emailC;
-        private string pwdC;
-        private string FirstNameC;
-        private string LastNameC;
-        private string phoneC;
-        private string bluecardNumberC;
-        private string fidelityC;
-        public Catalog(string email, string pwd, string FirstName, string LastName, string phone, string bluecardNumber, string fidelity)
+        private string idStore;
+        public Stock()
         {
             InitializeComponent();
-            this.emailC = email;
-            this.pwdC = pwd;
-            this.FirstNameC = FirstName;
-            this.LastNameC = LastName;
-            this.phoneC = phone;
-            this.bluecardNumberC = bluecardNumber;
-            this.fidelityC = fidelity;
-
         }
+
+        public Stock(string id)
+        {
+            InitializeComponent();
+            this.idStore = id;
+        }
+
 
         /// <summary>
         /// Clear all textbox
         /// </summary>
         private void BoxClear()
         {
-            //TODO
+
         }
         /// <summary>
         /// Open connection to database
@@ -63,7 +57,6 @@ namespace Bdd_Fleur_Demare_Delgado
         {
             connection.Close();
         }
-
 
         /// <summary>
         /// Execute la requête demandée si possible ou retourne l'erreur
@@ -95,28 +88,55 @@ namespace Bdd_Fleur_Demare_Delgado
                 CloseConnection();
             }
         }
+
         /// <summary>
-        /// Button to go back to client dashboard
+        /// Permet d'afficher la liste des stock 
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ButtonMenu_Click(object sender, RoutedEventArgs e)
+        private void AfficherCommande()
         {
-            ClientDashboard ClientDashboardPage = new ClientDashboard(emailC,pwdC,FirstNameC,LastNameC,phoneC,bluecardNumberC,fidelityC);
-            ClientDashboardPage.Show();
-            this.Close();
+            OpenConnection();
+            MySqlCommand command = connection.CreateCommand();
+            command.CommandText = $"select * from stock where id_Magasin = @id_Store";
+            command.Parameters.AddWithValue("@id_store", idStore);
+            DataTable dt = new DataTable();
+            dt.Load(command.ExecuteReader());
+            dataGrid.DataContext = dt;
+            CloseConnection();
+        }
+        private void BouttonAjouter_Click(object sender, RoutedEventArgs e)
+        {
+
         }
 
-        /// <summary>
-        /// Button to go to new order page
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-
-        private void ButtonNewOrderC_Click(object sender, RoutedEventArgs e)
+        private void BouttonRetirer_Click(object sender, RoutedEventArgs e)
         {
-            ClientNewOrder ClientNewOrderPage = new ClientNewOrder(emailC, pwdC,FirstNameC,LastNameC,phoneC,bluecardNumberC,fidelityC);
-            ClientNewOrderPage.Show();
+
+        }
+
+        private void BouttonMAJ_Click(object sender, RoutedEventArgs e)
+        {
+            AfficherCommande();
+        }
+
+        private void BouttonInfoCommande_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BouttonInfoPiece_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BouttonInfoVelo_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BouttonMenu_Click(object sender, RoutedEventArgs e)
+        {
+            StoreDashboard NewStoreDashboardPage = new StoreDashboard(idStore);
+            NewStoreDashboardPage.Show();
             this.Close();
         }
     }

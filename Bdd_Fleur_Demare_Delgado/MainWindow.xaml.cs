@@ -37,9 +37,10 @@ namespace Bdd_Fleur_Demare_Delgado
 
         private void GoEntreprise(object sender, RoutedEventArgs e)
         {
-            //Entreprise pageEntreprise = new Entreprise();
-            //pageEntreprise.Show();
-            //this.Close();
+            
+            StoreConnexion StorePageConnexion = new StoreConnexion();
+            StorePageConnexion.Show();
+            this.Close();
         }
 
     }

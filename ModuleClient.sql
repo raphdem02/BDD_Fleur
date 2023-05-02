@@ -8,7 +8,7 @@ BEGIN
     DECLARE v_exists INT;
 
     SELECT COUNT(*) INTO v_exists
-    FROM Client
+    FROM Clientclient
     WHERE e_mail = p_e_mail;
 
     IF v_exists = 1 THEN
@@ -71,3 +71,7 @@ LEFT JOIN Commande_Bouquet cb ON com.Id_Commande = cb.Id_Commande
 LEFT JOIN Bouquet b ON cb.Id_Bouquet = b.Id_Bouquet
 WHERE c.Id_client = 1 -- @clien_id
 ORDER BY com.Date_commande DESC, com.Id_Commande, p.Id_Produit, b.Id_Bouquet;
+
+
+
+

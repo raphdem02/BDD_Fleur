@@ -22,6 +22,15 @@
     <Compile Update="NewClient.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Stock.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="StoreConnexion.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="StoreDashboard.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Catalog.xaml">
@@ -40,6 +49,15 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="NewClient.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stock.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="StoreConnexion.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="StoreDashboard.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Utilisateur\Documents\ESILV\A3\S6\BDD\Bdd_Fleur_Demare_Delgado\Bdd_Fleur_Demare_Delgado\obj\Debug\net5.0-windows\
+C:\Users\Utilisateur\Documents\GitHub\BDD_Fleur\Bdd_Fleur_Demare_Delgado\obj\Debug\net5.0-windows\
 Bdd_Fleur_Demare_Delgado
 none
 false
 TRACE;DEBUG;NET;NET5_0;NETCOREAPP
-C:\Users\Utilisateur\Documents\ESILV\A3\S6\BDD\Bdd_Fleur_Demare_Delgado\Bdd_Fleur_Demare_Delgado\App.xaml
-6991681428
+C:\Users\Utilisateur\Documents\GitHub\BDD_Fleur\Bdd_Fleur_Demare_Delgado\App.xaml
+9-1528286575
 11581109789
-101997736781
+13-991185776
 202-1619094039
-Catalog.xaml;ClientConnexion.xaml;ClientDashboard.xaml;ClientNewOrder.xaml;MainWindow.xaml;NewClient.xaml;
+Catalog.xaml;ClientConnexion.xaml;ClientDashboard.xaml;ClientNewOrder.xaml;MainWindow.xaml;NewClient.xaml;Stock.xaml;StoreConnexion.xaml;StoreDashboard.xaml;
 
-True
+False
 

@@ -117,9 +117,26 @@ namespace Bdd_Fleur_Demare_Delgado
                 string CountryC = TextBoxCountryC.Text;
                 string PhoneC = TextBoxPhoneC.Text;
                 string BluecardNumberC = TextBoxBluecardNumberC.Text;
+                string fidelity = "Aucun";
 
-                //TODO query to add client to DB
-                ClientDashboard ClientDashboardPage = new ClientDashboard(EmailC,PwdC);
+                OpenConnection();
+                string query = "INSERT INTO Client (Nom, Prenom, N_tel, e_mail, mdp, carte_credit, fidelite, date_creation) VALUES (@nom, @prenom, @tel, @email, @mdp, @cc, 'Aucun', @date)";
+                MySqlCommand command = new MySqlCommand(query, connection);
+
+                // Définissez les valeurs des paramètres de la requête
+                command.Parameters.AddWithValue("@nom", FirstNameC);
+                command.Parameters.AddWithValue("@prenom", LastNameC);
+                command.Parameters.AddWithValue("@tel", PhoneC);
+                command.Parameters.AddWithValue("@email", EmailC);
+                command.Parameters.AddWithValue("@mdp", PwdC);
+                command.Parameters.AddWithValue("@cc", BluecardNumberC);
+                command.Parameters.AddWithValue("@date", DateTime.Now);
+
+                // Exécutez la requête
+                command.ExecuteNonQuery();
+                CloseConnection();
+
+                ClientDashboard ClientDashboardPage = new ClientDashboard(EmailC,PwdC,LastNameC,FirstNameC,PhoneC,BluecardNumberC,fidelity);
                 ClientDashboardPage.Show();
                 this.Close();
             }
