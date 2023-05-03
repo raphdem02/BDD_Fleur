@@ -28,7 +28,13 @@
     <Compile Update="StoreConnexion.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="StoreCustomer.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="StoreDashboard.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="StoreOrder.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -57,7 +63,13 @@
     <Page Update="StoreConnexion.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="StoreCustomer.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="StoreDashboard.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="StoreOrder.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

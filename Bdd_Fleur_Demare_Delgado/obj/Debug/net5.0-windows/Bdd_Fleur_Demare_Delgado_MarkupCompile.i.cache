@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET5_0;NETCOREAPP
 C:\Users\Utilisateur\Documents\GitHub\BDD_Fleur\Bdd_Fleur_Demare_Delgado\App.xaml
-9-1528286575
+11-1632743163
 11581109789
-13-991185776
+151845240482
 202-1619094039
-Catalog.xaml;ClientConnexion.xaml;ClientDashboard.xaml;ClientNewOrder.xaml;MainWindow.xaml;NewClient.xaml;Stock.xaml;StoreConnexion.xaml;StoreDashboard.xaml;
+Catalog.xaml;ClientConnexion.xaml;ClientDashboard.xaml;ClientNewOrder.xaml;MainWindow.xaml;NewClient.xaml;Stock.xaml;StoreConnexion.xaml;StoreCustomer.xaml;StoreDashboard.xaml;StoreOrder.xaml;
 
 False
 

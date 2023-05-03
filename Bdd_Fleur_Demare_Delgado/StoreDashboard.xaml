@@ -9,10 +9,12 @@
         WindowState="Maximized">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="317"/>
-            <ColumnDefinition Width="380"/>
-            <ColumnDefinition Width="476"/>
-            <ColumnDefinition Width="663"/>
+            <ColumnDefinition Width="259"/>
+            <ColumnDefinition Width="316"/>
+            <ColumnDefinition Width="341"/>
+            <ColumnDefinition Width="276"/>
+            <ColumnDefinition Width="654"/>
+
 
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0">
@@ -43,6 +45,16 @@
             <TextBlock Text="Stats" Margin="131,651,0,0" Foreground="White" FontSize="36" VerticalAlignment="Top" FontFamily="Fonts/#Simply Rounded" HorizontalAlignment="Left" Height="169" Width="277"></TextBlock>
         </Grid>
         <Grid Grid.Column="3">
+            <Button x:Name="CustomerButton" Height="230" Width="306" Click="GoCustomer"  BorderBrush="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="-0.286,0.237">
+                <Button.Background>
+                    <ImageBrush ImageSource="images/LogoClient.png" Stretch="Uniform"/>
+                </Button.Background>
+            </Button>
+
+            <TextBlock Text="Customers" Margin="59,660,0,0" Foreground="White" FontSize="36" VerticalAlignment="Top" FontFamily="Fonts/#Simply Rounded" HorizontalAlignment="Left" Height="169" Width="277"></TextBlock>
+        </Grid>
+
+        <Grid Grid.Column="4" Margin="0,0,10,0">
 
             <Button Name="ButtonMenu" Content="Menu"  Margin="0,0,372,345" Width="247" Height="178" Foreground="#3159C9" FontSize="24" Click="ButtonMenu_Click" ClickMode="Release" Background="#65A1F1" FontFamily="Fonts/#Simply Rounded" BorderBrush="#5B50B9" HorizontalAlignment="Right" VerticalAlignment="Bottom"></Button>
 

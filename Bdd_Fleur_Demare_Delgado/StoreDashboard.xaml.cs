@@ -40,7 +40,9 @@ namespace Bdd_Fleur_Demare_Delgado
 
         private void GoOrder(object sender, RoutedEventArgs e)
         {
-
+            StoreOrder StoreOrderWindow = new StoreOrder(idStore);
+            StoreOrderWindow.Show();
+            this.Close();
         }
 
         private void GoStat(object sender, RoutedEventArgs e)
@@ -52,6 +54,13 @@ namespace Bdd_Fleur_Demare_Delgado
         {
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
+            this.Close();
+        }
+
+        private void GoCustomer(object sender, RoutedEventArgs e)
+        {
+            StoreCustomer storeCustomerPage = new StoreCustomer(idStore);
+            storeCustomerPage.Show();
             this.Close();
         }
     }

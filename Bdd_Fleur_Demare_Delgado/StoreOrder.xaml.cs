@@ -17,23 +17,22 @@ using System.Data;
 
 namespace Bdd_Fleur_Demare_Delgado
 {
-    /// <summary>   
-    /// Logique d'interaction pour Stock.xaml
+    /// <summary>
+    /// Logique d'interaction pour StoreOrder.xaml
     /// </summary>
-    public partial class Stock : Window
+    public partial class StoreOrder : Window
     {
         MySqlConnection connection = new MySqlConnection("SERVER = localhost; PORT=3306;DATABASE=fleurs;UID=root;PASSWORD=root");
         private string idStore;
-        public Stock()
+        public StoreOrder()
         {
             InitializeComponent();
         }
 
-        public Stock(string id)
+        public StoreOrder(string id)
         {
             InitializeComponent();
             this.idStore = id;
-            AfficherStock();
         }
 
 
@@ -91,44 +90,69 @@ namespace Bdd_Fleur_Demare_Delgado
         }
 
         /// <summary>
-        /// Permet d'afficher la liste des stock 
+        /// Permet d'afficher la liste des commandes
         /// </summary>
-        private void AfficherStock()
+        private void AfficherCommande(string date)
         {
             OpenConnection();
-            
+
             MySqlCommand command = connection.CreateCommand();
-            command.CommandText = $"SELECT s.Id_Magasin, m.Nom AS 'Nom du magasin', s.Id_Produit, p.Nom AS 'Nom du produit', s.Quantite " +
-                             "FROM Stock s " +
-                             "JOIN Magasin m ON s.Id_Magasin = m.Id_Magasin " +
-                             "JOIN Produit p ON s.Id_Produit = p.Id_Produit " +
-                             "WHERE s.Id_Magasin = @idMagasin " +
-                             "ORDER BY s.Id_Magasin, s.Id_Produit;";
+            command.CommandText = $"SELECT * FROM Commande WHERE DATE(Date_commande) = @date AND Id_Magasin = @idMagasin;";
             command.Parameters.AddWithValue("@idMagasin", idStore);
+            command.Parameters.AddWithValue("@date",date);
             DataTable dt = new DataTable();
             dt.Load(command.ExecuteReader());
             dataGrid.DataContext = dt;
             CloseConnection();
         }
-        /// <summary>
-        /// Allow to set new quantity of product when out of stock
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void BouttonMAJ_Click(object sender, RoutedEventArgs e)
         {
-            string nouvelleQuantite = TextBoxQuantity.Text;
-            string idProduit = TextBoxProductId.Text;
-            OpenConnection();
-            MySqlCommand command = connection.CreateCommand();
-            command.CommandText = "UPDATE Stock SET Quantite = @nouvelleQuantite WHERE Id_Magasin = @idMagasin AND Id_Produit = @idProduit;";
-            command.Parameters.AddWithValue("@nouvelleQuantite", nouvelleQuantite);
-            command.Parameters.AddWithValue("@idMagasin", idStore);
-            command.Parameters.AddWithValue("@idProduit", idProduit);
-            command.ExecuteNonQuery();
-            CloseConnection();
-            AfficherStock();
+            DateTime dateCalendrier = (DateTime)cldSample.SelectedDate;
+            string date_convert = dateCalendrier.ToString("yyyy-MM-dd");
+            string orderid = TextBoxOrderId.Text;
+            string Status = TextBoxStatusOrder.Text;
+            string description = TextBoxDescription.Text;
+            string prix_total = TextBoxPrixMax.Text;
+            if(orderid == "")
+            {
+                AfficherCommande(date_convert);
+            }
 
+            if(Status != "")
+            {
+                OpenConnection();
+                MySqlCommand command1 = connection.CreateCommand();
+                command1.CommandText = $"UPDATE Commande SET  Etat_commande = @etatCommande WHERE Id_Commande = @idCommande;";
+                command1.Parameters.AddWithValue("@prixTotal", prix_total);
+                command1.Parameters.AddWithValue("@etatCommande", Status);
+                command1.Parameters.AddWithValue("@message", description);
+                command1.Parameters.AddWithValue("@idCommande", orderid);
+                command1.ExecuteNonQuery();
+                CloseConnection();
+            }
+
+            if(description != "")
+            {
+                OpenConnection();
+                MySqlCommand command2 = connection.CreateCommand();
+                command2.CommandText = $"UPDATE Commande SET  message = @message WHERE Id_Commande = @idCommande;";
+                command2.Parameters.AddWithValue("@message", description);
+                command2.Parameters.AddWithValue("@idCommande", orderid);
+                command2.ExecuteNonQuery();
+                CloseConnection();
+            }
+            if(prix_total != "")
+            {
+                OpenConnection();
+                MySqlCommand command3 = connection.CreateCommand();
+                command3.CommandText = $"UPDATE Commande SET  Prix_total = @prixTotal WHERE Id_Commande = @idCommande;";
+                command3.Parameters.AddWithValue("@prixTotal", prix_total);
+                command3.Parameters.AddWithValue("@idCommande", orderid);
+                command3.ExecuteNonQuery();
+                CloseConnection();
+            }
+            
+            AfficherCommande(date_convert);
         }
 
         private void BouttonMenu_Click(object sender, RoutedEventArgs e)

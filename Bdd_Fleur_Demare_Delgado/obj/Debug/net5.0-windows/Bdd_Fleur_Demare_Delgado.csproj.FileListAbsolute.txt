@@ -90,3 +90,7 @@ C:\Users\Utilisateur\Documents\GitHub\BDD_Fleur\Bdd_Fleur_Demare_Delgado\obj\Deb
 C:\Users\Utilisateur\Documents\GitHub\BDD_Fleur\Bdd_Fleur_Demare_Delgado\obj\Debug\net5.0-windows\StoreDashboard.baml
 C:\Users\Utilisateur\Documents\GitHub\BDD_Fleur\Bdd_Fleur_Demare_Delgado\obj\Debug\net5.0-windows\Stock.g.cs
 C:\Users\Utilisateur\Documents\GitHub\BDD_Fleur\Bdd_Fleur_Demare_Delgado\obj\Debug\net5.0-windows\Stock.baml
+C:\Users\Utilisateur\Documents\GitHub\BDD_Fleur\Bdd_Fleur_Demare_Delgado\obj\Debug\net5.0-windows\StoreCustomer.g.cs
+C:\Users\Utilisateur\Documents\GitHub\BDD_Fleur\Bdd_Fleur_Demare_Delgado\obj\Debug\net5.0-windows\StoreCustomer.baml
+C:\Users\Utilisateur\Documents\GitHub\BDD_Fleur\Bdd_Fleur_Demare_Delgado\obj\Debug\net5.0-windows\StoreOrder.g.cs
+C:\Users\Utilisateur\Documents\GitHub\BDD_Fleur\Bdd_Fleur_Demare_Delgado\obj\Debug\net5.0-windows\StoreOrder.baml
