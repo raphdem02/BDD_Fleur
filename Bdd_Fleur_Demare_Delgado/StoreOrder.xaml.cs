@@ -140,6 +140,57 @@ namespace Bdd_Fleur_Demare_Delgado
                 command2.Parameters.AddWithValue("@idCommande", orderid);
                 command2.ExecuteNonQuery();
                 CloseConnection();
+                List<String> SplitString = description.Split(';').ToList() ;
+                List<String> ProductIdList = new List<String>();
+                List<String> ProductQuantity = new List<String>();
+                int size = SplitString.Count();
+                if(size % 2 == 0)
+                {
+                    for(int i = 0;i < size/2; i++)
+                    {
+                        string itemName = SplitString[2*i];
+                        OpenConnection();
+                        MySqlCommand command3 = connection.CreateCommand();
+                        command3.CommandText = $"SELECT Id_Produit FROM Produit WHERE Nom = @nom_produit";
+                        command3.Parameters.AddWithValue("@nom_produit", itemName);
+                        command3.ExecuteNonQuery();
+                        string productId = command3.ExecuteScalar().ToString();
+                        CloseConnection();
+                        ProductIdList.Add(productId);
+                        string itemQuantity = SplitString[2*i + 1];
+                        ProductQuantity.Add(itemQuantity);
+                    }
+                    int size2 = ProductIdList.Count();
+                    for(int j = 0; j < size2;j++)
+                    {
+                        string Id_produit = ProductIdList[j];
+                        string quantity = ProductQuantity[j];
+                        OpenConnection();
+                        MySqlCommand command4 = connection.CreateCommand();
+                        command4.CommandText = $"INSERT INTO Commande_Produit(Id_Commande, Id_Produit, Quantite) VALUES(@Id_Commande, @Id_Produit, @Quantite);";
+                        command4.Parameters.AddWithValue("@Id_Commande", orderid);
+                        command4.Parameters.AddWithValue("@Id_Produit", Id_produit);
+                        command4.Parameters.AddWithValue("@Quantite", quantity);
+                        command4.ExecuteNonQuery();
+                        CloseConnection();
+
+                    }
+
+                    OpenConnection();
+                    MySqlCommand command5 = connection.CreateCommand();
+                    command5.CommandText = @"
+    UPDATE Stock s
+    JOIN Commande_Produit cp ON s.Id_Produit = cp.Id_Produit
+    JOIN Commande c ON s.Id_Magasin = c.Id_Magasin
+    SET s.Quantite = s.Quantite - cp.Quantite
+    WHERE cp.Id_Commande = @Id_Commande AND c.Id_Commande = @Id_Commande;
+";
+                    command5.Parameters.AddWithValue("@Id_Commande", orderid);
+                    command5.ExecuteNonQuery();
+                    CloseConnection();
+
+                }
+                
             }
             if(prix_total != "")
             {

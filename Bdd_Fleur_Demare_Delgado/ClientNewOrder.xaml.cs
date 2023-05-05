@@ -156,7 +156,7 @@ namespace Bdd_Fleur_Demare_Delgado
             if(customize == "")
             {
                 OpenConnection();
-                using (MySqlCommand command = new MySqlCommand("CreateStandardOrder", connection))
+                using (MySqlCommand command = new MySqlCommand("CreateStandardOrder1", connection))
                 {
                     command.CommandType = CommandType.StoredProcedure;
 
@@ -167,9 +167,9 @@ namespace Bdd_Fleur_Demare_Delgado
                     command.Parameters.AddWithValue("@p_Adresse_livraison", DeliveryAdress);
                     command.Parameters.AddWithValue("@p_Message", description);
                     command.Parameters.AddWithValue("@p_Date_livraison_voulue", dateTimeDelivery);
-                    command.Parameters.AddWithValue("@p_Etat_commande", "VINV");
+                    //command.Parameters.AddWithValue("@p_Etat_commande", "VINV");
                     command.Parameters.AddWithValue("@p_Type_commande", "Standard");
-                    command.Parameters.AddWithValue("@p_Reduction", reduction);
+                    //command.Parameters.AddWithValue("@p_Reduction", reduction);
 
                     command.ExecuteNonQuery();
                 }
@@ -197,13 +197,86 @@ namespace Bdd_Fleur_Demare_Delgado
                 OpenConnection();
                 int rowsAffected = command3.ExecuteNonQuery();
                 CloseConnection();
-                //TODO actualisation stock
+                //ACtualisation STOCK
+                //Recuperer l'id de last order
+                string query_id = "SELECT LAST_INSERT_ID(); ";
+                using MySqlCommand command4 = new MySqlCommand(query_id, connection);
+                OpenConnection();
+                int lastId = Convert.ToInt32(command4.ExecuteScalar());
+                CloseConnection();
+
+                // reecuperer l'id bouquet correspondant au nom du message
+                string query_idBouquet = "SELECT Id_Bouquet FROM Bouquet WHERE Nom = @message; ";
+                using MySqlCommand command5 = new MySqlCommand(query_idBouquet, connection);
+                command5.Parameters.AddWithValue("@message", description);
+                OpenConnection();
+                int bouquetId = Convert.ToInt32(command5.ExecuteScalar());
+                CloseConnection();
+
+                // Actualisation stock apres command standard
+                string query_stock = "UPDATE Stock s " +
+        "JOIN Bouquet_Produit bp ON s.Id_Produit = bp.Id_Produit " +
+        "JOIN Commande_Bouquet cb ON cb.Id_Bouquet = bp.Id_Bouquet " +
+        "JOIN Commande c ON s.Id_Magasin = c.Id_Magasin AND c.Id_Commande = cb.Id_Commande " +
+        "SET s.Quantite = s.Quantite - 1 " +
+        "WHERE cb.Id_Commande = @Id_Commande AND cb.Id_Bouquet = @Id_Bouquet AND c.Id_Commande = @Id_Commande;";
+                using MySqlCommand command6 = new MySqlCommand(query_stock, connection);
+                command6.Parameters.AddWithValue("@Id_Commande", lastId);
+                command6.Parameters.AddWithValue("@Id_Bouquet", bouquetId);
+                OpenConnection();
+                command6.ExecuteNonQuery();
+                CloseConnection();
+              
                 BoxClear();
             }
 
             if(customize == "Personalise")
             {
                 //todo add sql command for custom order
+                OpenConnection();
+                using (MySqlCommand command = new MySqlCommand("CreatePersonalizedOrder", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+
+
+                    command.Parameters.AddWithValue("@p_Id_Client", id);
+                    command.Parameters.AddWithValue("@p_Id_Magasin", id_store);
+                    command.Parameters.AddWithValue("@p_Date_commande", DateTime.Now.Date);
+                    command.Parameters.AddWithValue("@p_Adresse_livraison", DeliveryAdress);
+                    command.Parameters.AddWithValue("@p_Message", description);
+                    command.Parameters.AddWithValue("@p_Date_livraison_voulue", dateTimeDelivery);
+                    command.Parameters.AddWithValue("@p_Etat_commande", "CPAV");
+                    command.Parameters.AddWithValue("@p_Type_commande", "Standard");
+                    command.Parameters.AddWithValue("@p_Prix_maximum", price);
+
+                    command.ExecuteNonQuery();
+                }
+
+                CloseConnection();
+
+                //actualisation fidelite
+                string updateQuery = @"
+                UPDATE Client
+                SET fidelite = (
+                    SELECT CASE
+                        WHEN commandes_par_mois > 5 THEN 'Or'
+                        WHEN commandes_par_mois >= 1 THEN 'Bronze'
+                        ELSE 'Aucun'
+                    END
+                    FROM (
+                        SELECT 
+                            COUNT(*) / GREATEST(TIMESTAMPDIFF(MONTH, MIN(Date_commande), NOW()), 1) AS commandes_par_mois
+                        FROM Commande WHERE Id_Client = @client_id GROUP BY Id_Client
+                    ) AS subquery
+                )
+                WHERE Id_client = @client_id;";
+
+                using MySqlCommand command3 = new MySqlCommand(updateQuery, connection);
+                command3.Parameters.AddWithValue("@client_id", id);
+                OpenConnection();
+                int rowsAffected = command3.ExecuteNonQuery();
+                CloseConnection();
+                BoxClear();
             }
            
             
