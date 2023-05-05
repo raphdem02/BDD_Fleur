@@ -95,6 +95,8 @@
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
             </Grid.RowDefinitions>
 
             <Grid Grid.Row="0">
@@ -103,6 +105,16 @@
                 </Viewbox>
             </Grid>
             <Grid Grid.Row="1">
+                <Viewbox Stretch="Uniform">
+                    <Button Name="BouttonExportXML" Content="Export XML"  Width="192" Height="108" Margin="10 10 10 10" Foreground="White" FontSize="24" Click="BouttonExport_XML" ClickMode="Release" Background="#9B41E0" FontFamily="Fonts/#Simply Rounded" BorderBrush="#5B50B9"></Button>
+                </Viewbox>
+            </Grid>
+            <Grid Grid.Row="2">
+                <Viewbox Stretch="Uniform">
+                    <Button Name="BouttonExportJSON" Content="Export JSON"  Width="192" Height="108" Margin="10 10 10 10" Foreground="White" FontSize="24" Click="BouttonExport_JSON" ClickMode="Release" Background="#9B41E0" FontFamily="Fonts/#Simply Rounded" BorderBrush="#5B50B9"></Button>
+                </Viewbox>
+            </Grid>
+            <Grid Grid.Row="3">
                 <Viewbox Stretch="Uniform">
                     <Button Name="BouttonMenu" Content="Menu"  Width="192" Height="108" Margin="10 10 10 10" Foreground="#3159C9" FontSize="24" Click="BouttonMenu_Click" ClickMode="Release" Background="#65A1F1" FontFamily="Fonts/#Simply Rounded" BorderBrush="#5B50B9"></Button>
                 </Viewbox>

@@ -14,6 +14,8 @@ using System.Windows.Shapes;
 using MySql.Data.MySqlClient;
 using System.Diagnostics;
 using System.Data;
+using System.IO;
+using System.Xml;
 
 namespace Bdd_Fleur_Demare_Delgado
 {
@@ -148,6 +150,83 @@ namespace Bdd_Fleur_Demare_Delgado
             StoreDashboard NewStoreDashboardPage = new StoreDashboard(idStore);
             NewStoreDashboardPage.Show();
             this.Close();
+        }
+
+        private void BouttonExport_XML(object sender, RoutedEventArgs e)
+        {
+            OpenConnection();
+            // Requête SQL pour récupérer les clients ayant effectué au moins deux commandes au cours du dernier mois
+            string query = "SELECT c.* FROM Client c " +
+               "INNER JOIN Commande cmd ON c.Id_client = cmd.Id_client " +
+               "WHERE cmd.date_commande >= DATE_SUB(NOW(), INTERVAL 1 MONTH) " +
+               "GROUP BY c.Id_client HAVING COUNT(*) >= 2";
+
+            // Exécution de la requête SQL
+            MySqlCommand command = new MySqlCommand(query, connection);
+            MySqlDataReader reader = command.ExecuteReader();
+
+            // Création d'un objet XmlTextWriter pour écrire le fichier XML
+            XmlTextWriter writer = new XmlTextWriter("clients.xml", null);
+            writer.Formatting = Formatting.Indented;
+            writer.WriteStartElement("clients");
+
+            // Boucle sur les résultats de la requête SQL
+            while (reader.Read())
+            {
+                // Ajout d'un élément "client" pour chaque client retourné par la requête SQL
+                writer.WriteStartElement("client");
+                writer.WriteElementString("id", reader["Id_client"].ToString());
+                writer.WriteElementString("nom", reader["Nom"].ToString());
+                writer.WriteElementString("prenom", reader["Prenom"].ToString());
+                writer.WriteEndElement();
+            }
+
+            // Fermeture des éléments XML et du fichier
+            writer.WriteEndElement();
+            writer.Close();
+            CloseConnection();
+        }
+
+        private void BouttonExport_JSON(object sender, RoutedEventArgs e)
+        {
+            OpenConnection();
+            // Requête SQL pour récupérer les clients ayant effectué au moins deux commandes au cours du dernier mois
+            string query = "SELECT * FROM Client " +
+               "WHERE Id_client NOT IN (SELECT DISTINCT Id_client FROM Commande WHERE date_commande >= DATE_SUB(NOW(), INTERVAL 6 MONTH))";
+
+
+            // Exécution de la requête SQL
+            MySqlCommand command = new MySqlCommand(query, connection);
+            MySqlDataReader reader = command.ExecuteReader();
+
+            // Création d'un objet StringBuilder pour construire le JSON
+            StringBuilder jsonBuilder = new StringBuilder();
+            jsonBuilder.Append("{\"clients\":[");
+
+            // Boucle sur les résultats de la requête SQL
+            while (reader.Read())
+            {
+                // Ajout d'un élément "client" pour chaque client retourné par la requête SQL
+                jsonBuilder.Append("{");
+                jsonBuilder.Append("\"id\":\"" + reader["Id_client"].ToString() + "\",");
+                jsonBuilder.Append("\"nom\":\"" + reader["Nom"].ToString() + "\",");
+                jsonBuilder.Append("\"prenom\":\"" + reader["Prenom"].ToString() + "\"");
+                jsonBuilder.Append("},");
+            }
+
+            // Suppression de la dernière virgule
+            if (jsonBuilder.Length > 1)
+            {
+                jsonBuilder.Length--;
+            }
+
+            // Fermeture des éléments JSON et du StringBuilder
+            jsonBuilder.Append("]}");
+            string json = jsonBuilder.ToString();
+
+            // Écriture du JSON dans un fichier
+            File.WriteAllText("clients.json", json);
+            CloseConnection();
         }
     }
 }
