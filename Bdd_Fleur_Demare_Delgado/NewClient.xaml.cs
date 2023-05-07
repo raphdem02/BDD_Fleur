@@ -123,7 +123,6 @@ namespace Bdd_Fleur_Demare_Delgado
                 string query = "INSERT INTO Client (Nom, Prenom, N_tel, e_mail, mdp, carte_credit, fidelite, date_creation) VALUES (@nom, @prenom, @tel, @email, @mdp, @cc, 'Aucun', @date)";
                 MySqlCommand command = new MySqlCommand(query, connection);
 
-                // Définissez les valeurs des paramètres de la requête
                 command.Parameters.AddWithValue("@nom", FirstNameC);
                 command.Parameters.AddWithValue("@prenom", LastNameC);
                 command.Parameters.AddWithValue("@tel", PhoneC);
@@ -132,7 +131,6 @@ namespace Bdd_Fleur_Demare_Delgado
                 command.Parameters.AddWithValue("@cc", BluecardNumberC);
                 command.Parameters.AddWithValue("@date", DateTime.Now);
 
-                // Exécutez la requête
                 command.ExecuteNonQuery();
                 CloseConnection();
 

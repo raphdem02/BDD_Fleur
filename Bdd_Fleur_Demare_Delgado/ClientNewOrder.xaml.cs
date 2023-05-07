@@ -103,6 +103,11 @@ namespace Bdd_Fleur_Demare_Delgado
             }
         }
 
+        /// <summary>
+        /// Button to go back to dashboard
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ButtonMenu_Click(object sender, RoutedEventArgs e)
         {
             ClientDashboard ClientDashboardPage = new ClientDashboard(email, pwd, FirstName, LastName, phone, bluecardNumber, fidelity);
@@ -110,6 +115,11 @@ namespace Bdd_Fleur_Demare_Delgado
             this.Close();
         }
 
+        /// <summary>
+        /// Button to validate order
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ButtonValidateOrderC_Click(object sender, RoutedEventArgs e)
         {
             string customize = TextBoxCustomizeC.Text;
@@ -229,10 +239,10 @@ namespace Bdd_Fleur_Demare_Delgado
               
                 BoxClear();
             }
-
+            //Custom Order
             if(customize == "Personalise")
             {
-                //todo add sql command for custom order
+
                 OpenConnection();
                 using (MySqlCommand command = new MySqlCommand("CreatePersonalizedOrder", connection))
                 {

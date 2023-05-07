@@ -1,0 +1,135 @@
+﻿<Window x:Class="Bdd_Fleur_Demare_Delgado.StoreStat"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Bdd_Fleur_Demare_Delgado"
+        mc:Ignorable="d"
+        Title="StoreStat" Height = "1000" Width = "1900" Background = "#1C1358"
+        WindowState="Maximized">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="300"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Viewbox Stretch="Uniform">
+                    <TextBlock Text="Statistics" FontSize="100" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,20,20,20" FontFamily="Fonts/#Simply Rounded">
+                        <TextBlock.Foreground>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="0,0.8">
+                                <GradientStop Color="#65A1F1" Offset="0.2" />
+                                <GradientStop Color="#9B41E0" Offset="0.9" />
+                            </LinearGradientBrush>
+                        </TextBlock.Foreground>
+                    </TextBlock>
+                </Viewbox>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Viewbox Stretch="Uniform">
+                    <TextBox Name="TextBoxPrice"  Margin="50 0 20 0" Width="400" Height="70" Background="#9B41E0" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Left" FontFamily="Fonts/#Simply Rounded" BorderBrush="#5B50B9" BorderThickness="4"></TextBox>
+                </Viewbox>
+            </Grid>
+            <Grid Grid.Row="2">
+                <Viewbox Stretch="Uniform">
+                    <TextBox Name="TextBoxBestBouqet"  Margin="50 0 20 0" Width="400" Height="70" Background="#9B41E0" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Left" FontFamily="Fonts/#Simply Rounded" BorderBrush="#5B50B9" BorderThickness="4"></TextBox>
+                </Viewbox>
+            </Grid>
+            <Grid Grid.Row="3">
+                <Viewbox Stretch="Uniform">
+                    <TextBox Name="TextBoxBestStore"  Margin="50 0 20 0" Width="400" Height="70" Background="#9B41E0" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Left" FontFamily="Fonts/#Simply Rounded" BorderBrush="#5B50B9" BorderThickness="4"></TextBox>
+                </Viewbox>
+            </Grid>
+        </Grid>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="1">
+                <Viewbox Stretch="Uniform">
+                    <TextBlock Text="Prix moyen bouquet" Margin="25 0 25 0" Foreground="White" FontSize="36" VerticalAlignment="Center" FontFamily="Fonts/#Simply Rounded"></TextBlock>
+                </Viewbox>
+            </Grid>
+            <Grid Grid.Row="2">
+                <Viewbox Stretch="Uniform">
+                    <TextBlock Text="Meilleur bouquet" Margin="25 0 25 0" Foreground="White" FontSize="36" VerticalAlignment="Center" FontFamily="Fonts/#Simply Rounded"></TextBlock>
+                </Viewbox>
+            </Grid>
+            <Grid Grid.Row="3">
+                <Viewbox Stretch="Uniform">
+                    <TextBlock Text="Meilleurs magasin CA" Margin="25 0 25 0" Foreground="White" FontSize="36" VerticalAlignment="Center" FontFamily="Fonts/#Simply Rounded"></TextBlock>
+                </Viewbox>
+            </Grid>
+        </Grid>
+        <Grid Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <ScrollViewer HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible" Foreground="#5B50B9">
+                    <DataGrid Name="dataGrid" ItemsSource="{Binding}" Background="#1C1358" AlternatingRowBackground="#5B50B9" RowBackground="#272557" Foreground="White" BorderBrush="#5B50B9" FontFamily="Fonts/#Simply Rounded" FontSize="15"  AutoGenerateColumns="True" CanUserAddRows="False">
+                        <DataGrid.Resources>
+                            <Style TargetType="{x:Type DataGridColumnHeader}">
+                                <Setter Property="Background" Value="#9B41E0"/>
+                            </Style>
+                            <Style TargetType="{x:Type DataGridRowHeader}">
+                                <Setter Property="Background" Value="#1C1358"/>
+                            </Style>
+                        </DataGrid.Resources>
+                    </DataGrid>
+                </ScrollViewer>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+            </Grid>
+        </Grid>
+        <Grid Grid.Column="3">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Viewbox Stretch="Uniform">
+                    <Button Name="BouttonBestClientMonth" Content="Best Clients 1M"  Width="192" Height="108" Margin="10 10 10 10" Foreground="White" FontSize="24" Click="BouttonBestClientMonth_Click" ClickMode="Release" Background="#9B41E0" FontFamily="Fonts/#Simply Rounded" BorderBrush="#5B50B9"></Button>
+                </Viewbox>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Viewbox Stretch="Uniform">
+                    <Button Name="BouttonBestClientYear" Content="Best Clients 1Y"  Width="192" Height="108" Margin="10 10 10 10" Foreground="White" FontSize="24" Click="BouttonBestClientYear_Click" ClickMode="Release" Background="#9B41E0" FontFamily="Fonts/#Simply Rounded" BorderBrush="#5B50B9"></Button>
+                </Viewbox>
+            </Grid>
+            <Grid Grid.Row="2">
+                <Viewbox Stretch="Uniform">
+                    <Button Name="BouttonBestProductBouquet" Content="Best Items"  Width="192" Height="108" Margin="10 10 10 10" Foreground="White" FontSize="24" Click="BouttonBestItem_Click" ClickMode="Release" Background="#9B41E0" FontFamily="Fonts/#Simply Rounded" BorderBrush="#5B50B9"></Button>
+                </Viewbox>
+            </Grid>
+            <Grid Grid.Row="3">
+                <Viewbox Stretch="Uniform">
+                    <Button Name="BouttonMenu" Content="Menu"  Width="192" Height="108" Margin="10 10 10 10" Foreground="#3159C9" FontSize="24" Click="BouttonMenu_Click" ClickMode="Release" Background="#65A1F1" FontFamily="Fonts/#Simply Rounded" BorderBrush="#5B50B9"></Button>
+                </Viewbox>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

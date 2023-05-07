@@ -31,13 +31,22 @@ namespace Bdd_Fleur_Demare_Delgado
             this.idStore = id;
         }
 
+        /// <summary>
+        /// Allow to go to the stock window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void GoStock(object sender, RoutedEventArgs e)
         {
             Stock StockWindow = new Stock(idStore);
             StockWindow.Show();
             this.Close();
         }
-
+        /// <summary>
+        /// Allow to go to the Order Window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void GoOrder(object sender, RoutedEventArgs e)
         {
             StoreOrder StoreOrderWindow = new StoreOrder(idStore);
@@ -45,17 +54,35 @@ namespace Bdd_Fleur_Demare_Delgado
             this.Close();
         }
 
+        /// <summary>
+        /// Allow to go to the Stat Window 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void GoStat(object sender, RoutedEventArgs e)
         {
-
+            StoreStat StoreStatWindow = new StoreStat(idStore);
+            StoreStatWindow.Show();
+            this.Close();
         }
 
+        /// <summary>
+        /// Allow to go back to the menu window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ButtonMenu_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
             this.Close();
         }
+
+        /// <summary>
+        /// allow to go to the customer window 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 
         private void GoCustomer(object sender, RoutedEventArgs e)
         {

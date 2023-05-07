@@ -105,6 +105,12 @@ namespace Bdd_Fleur_Demare_Delgado
             dataGrid.DataContext = dt;
             CloseConnection();
         }
+
+        /// <summary>
+        /// Button to manage orders
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BouttonMAJ_Click(object sender, RoutedEventArgs e)
         {
             DateTime dateCalendrier = (DateTime)cldSample.SelectedDate;
@@ -120,6 +126,7 @@ namespace Bdd_Fleur_Demare_Delgado
 
             if(Status != "")
             {
+                //SET status of an order 
                 OpenConnection();
                 MySqlCommand command1 = connection.CreateCommand();
                 command1.CommandText = $"UPDATE Commande SET  Etat_commande = @etatCommande WHERE Id_Commande = @idCommande;";
@@ -133,6 +140,7 @@ namespace Bdd_Fleur_Demare_Delgado
 
             if(description != "")
             {
+                //Manage custom order
                 OpenConnection();
                 MySqlCommand command2 = connection.CreateCommand();
                 command2.CommandText = $"UPDATE Commande SET  message = @message WHERE Id_Commande = @idCommande;";
@@ -140,18 +148,18 @@ namespace Bdd_Fleur_Demare_Delgado
                 command2.Parameters.AddWithValue("@idCommande", orderid);
                 command2.ExecuteNonQuery();
                 CloseConnection();
-                List<String> SplitString = description.Split(';').ToList() ;
-                List<String> ProductIdList = new List<String>();
-                List<String> ProductQuantity = new List<String>();
+                List<String> SplitString = description.Split(';').ToList() ; //List of the messsage split
+                List<String> ProductIdList = new List<String>(); //List of product id
+                List<String> ProductQuantity = new List<String>(); //List of quantity by product
                 int size = SplitString.Count();
-                if(size % 2 == 0)
+                if(size % 2 == 0) //If size % 2 != 0 it means that the user didn't respect the format which is "NameOfTheProduct;Quantity of it"
                 {
                     for(int i = 0;i < size/2; i++)
                     {
                         string itemName = SplitString[2*i];
                         OpenConnection();
                         MySqlCommand command3 = connection.CreateCommand();
-                        command3.CommandText = $"SELECT Id_Produit FROM Produit WHERE Nom = @nom_produit";
+                        command3.CommandText = $"SELECT Id_Produit FROM Produit WHERE Nom = @nom_produit"; // Have the id of product by the name of it
                         command3.Parameters.AddWithValue("@nom_produit", itemName);
                         command3.ExecuteNonQuery();
                         string productId = command3.ExecuteScalar().ToString();
@@ -165,6 +173,7 @@ namespace Bdd_Fleur_Demare_Delgado
                     {
                         string Id_produit = ProductIdList[j];
                         string quantity = ProductQuantity[j];
+                        //Insert each product with its quantity
                         OpenConnection();
                         MySqlCommand command4 = connection.CreateCommand();
                         command4.CommandText = $"INSERT INTO Commande_Produit(Id_Commande, Id_Produit, Quantite) VALUES(@Id_Commande, @Id_Produit, @Quantite);";
@@ -175,7 +184,7 @@ namespace Bdd_Fleur_Demare_Delgado
                         CloseConnection();
 
                     }
-
+                    //Update Stock
                     OpenConnection();
                     MySqlCommand command5 = connection.CreateCommand();
                     command5.CommandText = @"
@@ -192,6 +201,7 @@ namespace Bdd_Fleur_Demare_Delgado
                 }
                 
             }
+            //Update Price
             if(prix_total != "")
             {
                 OpenConnection();
@@ -205,7 +215,11 @@ namespace Bdd_Fleur_Demare_Delgado
             
             AfficherCommande(date_convert);
         }
-
+        /// <summary>
+        /// Button to go back to the dashboard
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BouttonMenu_Click(object sender, RoutedEventArgs e)
         {
             StoreDashboard NewStoreDashboardPage = new StoreDashboard(idStore);

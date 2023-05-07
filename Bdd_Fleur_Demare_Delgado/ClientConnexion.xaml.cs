@@ -99,32 +99,6 @@ namespace Bdd_Fleur_Demare_Delgado
                 string phone = "";
                 string bluecardnumber = "";
                 string fidelity = "";
-
-                /*if(emailC == "azerty" && pwdC == "azerty")
-                {
-                    MainWindow mainWindow = new MainWindow();
-                    mainWindow.Show();
-                    this.Close();
-                }*/
-
-                
-                string p_message;
-                /*OpenConnection();
-
-                MySqlCommand command = new MySqlCommand("VerifierEmail", connection);
-                command.CommandType = CommandType.StoredProcedure;
-
-                command.Parameters.AddWithValue("@p_e_mail", EmailC);
-                command.Parameters["@p_e_mail"].Direction = ParameterDirection.Input;
-
-                command.Parameters.AddWithValue("@p_message", "");
-                command.Parameters["@p_message"].Direction = ParameterDirection.Output;
-
-                command.ExecuteNonQuery();
-
-                p_message = command.Parameters["@p_message"].Value.ToString();
-
-                CloseConnection();*/
                 OpenConnection();
                 string query = "SELECT * FROM Client WHERE e_mail = @email AND mdp = @password";
                 MySqlCommand command = new MySqlCommand(query, connection);
