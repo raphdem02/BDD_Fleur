@@ -117,7 +117,7 @@ namespace Bdd_Fleur_Demare_Delgado {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Bdd_Fleur_Demare_Delgado;component/storeorder.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Bdd_Fleur_Demare_Delgado;V1.0.0.0;component/storeorder.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\StoreOrder.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
