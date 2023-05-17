@@ -226,5 +226,28 @@ namespace Bdd_Fleur_Demare_Delgado
             NewStoreDashboardPage.Show();
             this.Close();
         }
+
+        /// <summary>
+        /// Button to delete an order
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BouttonDelete_Click(object sender, RoutedEventArgs e)
+        {
+            string orderid = TextBoxOrderId.Text;
+            OpenConnection();
+            MySqlCommand command = connection.CreateCommand();
+            command.CommandText = @"DELETE Commande, Commande_Produit, Commande_Bouquet
+                FROM Commande
+                LEFT JOIN Commande_Produit ON Commande.Id_Commande = Commande_Produit.Id_Commande
+                LEFT JOIN Commande_Bouquet ON Commande.Id_Commande = Commande_Bouquet.Id_Commande
+                WHERE Commande.Id_Commande = @idCommande";
+            command.Parameters.AddWithValue("@idCommande", orderid);
+            command.ExecuteNonQuery();
+            CloseConnection();
+            DateTime dateCalendrier = (DateTime)cldSample.SelectedDate;
+            string date_convert = dateCalendrier.ToString("yyyy-MM-dd");
+            AfficherCommande(date_convert);
+        }
     }
 }
